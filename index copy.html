@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te amo Belem</title>
+</head>
+<body>
+    <style> 
+    body {
+        background-color: rgb(255, 216, 229);
+        font-family: sans-serif, sans-serif;
+    }
+    </style>
+<div class="caja"> 
+    <h1>Desbloqueame Belem por favor, ya no aguanto más sin ti 😭😭</h1>
+    <p>Te extraño mucho, esta es la primera pagina que hago en mi vida, estoy aprendiendo a programar xd</p>
+    </div>
+    <div id="video"></div>
+    <button id="corazon">Presiona aqui (✿◠‿◠) </button>
+ <script>
+let audioYaSono = false;
+
+document.getElementById("corazon").addEventListener("click", function() {
+
+    // 💗 corazones SIEMPRE
+    for (let i = 0; i < 20; i++) {
+        let corazon = document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.textContent = "💗";
+
+        corazon.style.left = Math.random() * window.innerWidth + "px";
+        corazon.style.top = window.innerHeight - 50 + "px";
+
+        document.body.appendChild(corazon);
+
+        setTimeout(() => corazon.remove(), 1500);
+    }
+
+    // 🎵 solo audio una vez
+    if (!audioYaSono) {
+        let audio = document.createElement("iframe");
+
+        audio.width = "1";
+        audio.height = "1";
+        audio.style.opacity = "0";
+        audio.style.position = "absolute";
+
+        audio.src = "https://www.youtube.com/embed/o4NnI_sXZpw?start=6&end=85&autoplay=1";
+        audio.allow = "autoplay";
+        audio.referrerPolicy = "strict-origin-when-cross-origin";
+
+        document.body.appendChild(audio); // ✅ AQUÍ ESTABA EL ERROR
+
+        audioYaSono = true;
+        console.log("Audio reproducido por primera vez");
+    }
+});
+</script>
+    <img src="https://i.pinimg.com/564x/d2/5b/b9/d25bb9cd3fcaf6aa53c64e1ecf2df59a.jpg" alt="Vuelve por favor" 
+    style="display: block; margin: 20px auto; width: 90%; max-width: 400px; height: auto; ;">
+   <style>
+   h1 {
+        color: rgb(247, 59, 91);
+        text-align: center;
+        font-size: 45px;
+    }
+    p {
+        font-size: 30px;
+        text-align: center;
+    }
+    .caja {
+        background-color: rgb(255, 199, 208);
+        padding: 40px;
+        border-radius: 20px;
+        width: 80%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: rgb(241, 60, 90);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    button:hover {
+        background-color: hotpink;
+        transform: scale(1.06);
+    }
+    .corazon {
+    position: fixed;
+    font-size: 60px;
+    animation: flotar 1.5s linear forwards;
+    pointer-events: none;
+}
+@keyframes flotar {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+}
+    </style>
+</body>
+</html>
