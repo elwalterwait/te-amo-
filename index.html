@@ -40,21 +40,36 @@ document.getElementById("corazon").addEventListener("click", function() {
         setTimeout(() => corazon.remove(), 1500);
     }
 
-    // 🎵 solo audio una vez
-        if (!audioYaSono) {
+       // 🎵 audio solo una vez
+    if (!audioYaSono) {
         let musica = document.getElementById("musica");
 
-        musica.load();
-        musica.currentTime = 61;
-        musica.volume = 0.2;
+        musica.currentTime = 0;
+        musica.volume = 0; // 🔥 empieza en silencio
+        musica.play();
 
-        musica.play().catch(error => {
-            console.log("Error de audio:", error);
-        });
+        // 🌅 FADE IN
+        let vol = 0;
+        let fadeIn = setInterval(() => {
+            if (vol < 0.2) {
+                vol += 0.02;
+                musica.volume = vol;
+            } else {
+                clearInterval(fadeIn);
+            }
+        }, 200);
 
+        // 🌙 FADE OUT antes de terminar
         setTimeout(() => {
-            musica.pause();
-        }, 26000);
+            let fadeOut = setInterval(() => {
+                if (musica.volume > 0.02) {
+                    musica.volume -= 0.02;
+                } else {
+                    clearInterval(fadeOut);
+                    musica.pause();
+                }
+            }, 200);
+        }, 22000); // empieza fade 4 seg antes
 
         audioYaSono = true;
     }
