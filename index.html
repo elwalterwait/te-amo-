@@ -43,9 +43,11 @@ document.getElementById("corazon").addEventListener("click", function() {
     // 🎵 solo audio una vez
     if (!audioYaSono) {
         let musica = document.getElementById("musica");
-        musica.volume = 0.2;
-        musica.currentTime = 61; // empieza en 1:01
+        musica.pause();              // 🔥 asegura reinicio limpio
+        musica.currentTime = 61;
+        musica.volume = 0.05;       // 🔉 prueba súper bajo
         musica.play();
+
 
         setTimeout(() => {
             musica.pause();
