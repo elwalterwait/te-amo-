@@ -43,6 +43,15 @@ document.getElementById("corazon").addEventListener("click", function() {
     // 🎵 solo audio una vez
     if (!audioYaSono) {
         let musica = document.getElementById("musica");
+        let vol = 0;
+            let subir = setInterval(() => {
+                if (vol < 0.4) {
+                    vol += 0.05;
+                    musica.volume = vol;
+                } else {
+        clearInterval(subir);
+    }
+}, 200);
         musica.currentTime = 61; // empieza en 1:01
         musica.play();
 
