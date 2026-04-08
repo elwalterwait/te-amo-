@@ -41,18 +41,21 @@ document.getElementById("corazon").addEventListener("click", function() {
     }
 
     // 🎵 solo audio una vez
-    if (!audioYaSono) {
+        if (!audioYaSono) {
         let musica = document.getElementById("musica");
-        musica.pause();              // 🔥 asegura reinicio limpio
-        musica.currentTime = 61;
-        musica.volume = 0.2; 
-        console.log(musica.volume);// 🔉 prueba súper bajo
-        musica.play();
 
+        musica.pause();
+        musica.load();
+        musica.currentTime = 61;
+        musica.volume = 0.2;
+
+        musica.play().catch(error => {
+            console.log("Error de audio:", error);
+        });
 
         setTimeout(() => {
             musica.pause();
-        }, 26000); // se detiene en 1:27 (26 segundos después)
+        }, 26000);
 
         audioYaSono = true;
     }
