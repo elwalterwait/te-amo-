@@ -14,17 +14,10 @@
         background-color: rgb(255, 216, 229);
         font-family: sans-serif, sans-serif;
     }
-    </style>
-<div class="caja"> 
-    <h1>Desbloqueame Belem por favor, ya no aguanto más sin ti 😭😭</h1>
-    <p>Te extraño mucho, esta es la primera pagina que hago en mi vida, estoy aprendiendo a programar xd</p>
-    </div>
-    <div id="video"></div>
-    <button id="corazon">Presiona aqui (✿◠‿◠) </button>
- <script>
+   <script>
 let audioYaSono = false;
 
-document.getElementById("corazon").addEventListener("click", function() {
+document.getElementById("corazon").addEventListener("click", function () {
 
     // 💗 corazones SIEMPRE
     for (let i = 0; i < 20; i++) {
@@ -40,22 +33,25 @@ document.getElementById("corazon").addEventListener("click", function() {
         setTimeout(() => corazon.remove(), 1500);
     }
 
-       // 🎵 audio solo una vez
-       if (!audioYaSono) {
+    // 🎵 audio solo una vez
+    if (!audioYaSono) {
         let musica = document.getElementById("musica");
 
         musica.load();
 
-       musica.addEventListener("loadedmetadata", function iniciarAudio() {    
-        musica.volume = 0.4;
-        musica.currentTime = 61; // empieza en 1:01
-        musica.play();
+        musica.addEventListener("loadedmetadata", function iniciarAudio() {
+            musica.volume = 0.4;
+            musica.currentTime = 61; // 🎵 empieza en 1:01
+            musica.play();
 
-        setTimeout(() => {
-            musica.pause();
-        }, 26000); // se detiene en 1:27 (26 segundos después)
+            setTimeout(() => {
+                musica.pause();
+            }, 26000);
 
-        audioYaSono = true;
+            audioYaSono = true;
+
+            musica.removeEventListener("loadedmetadata", iniciarAudio);
+        });
     }
 });
 </script>
