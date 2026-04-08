@@ -6,6 +6,9 @@
     <title>Te amo Belem</title>
 </head>
 <body>
+    <audio id="musica">
+        <source src="comeback.mp3" type="audio/mpeg">
+    </audio>
     <style> 
     body {
         background-color: rgb(255, 216, 229);
@@ -39,21 +42,15 @@ document.getElementById("corazon").addEventListener("click", function() {
 
     // 🎵 solo audio una vez
     if (!audioYaSono) {
-        let audio = document.createElement("iframe");
+        let musica = document.getElementById("musica");
+        musica.currentTime = 61; // empieza en 1:01
+        musica.play();
 
-        audio.width = "1";
-        audio.height = "1";
-        audio.style.opacity = "0";
-        audio.style.position = "absolute";
-
-        audio.src = "https://www.youtube.com/embed/o4NnI_sXZpw?start=61&end=87&autoplay=1";
-        audio.allow = "autoplay";
-        audio.referrerPolicy = "strict-origin-when-cross-origin";
-
-        document.body.appendChild(audio); // ✅ AQUÍ ESTABA EL ERROR
+        setTimeout(() => {
+            musica.pause();
+        }, 26000); // se detiene en 1:27 (26 segundos después)
 
         audioYaSono = true;
-        console.log("Audio reproducido por primera vez");
     }
 });
 </script>
